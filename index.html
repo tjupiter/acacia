@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive CSS Grid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Responsive CSS Grid</h1>
+        <section>
+            <a href="./index.html"  class="active-version">v1</a>
+            <a href="article.html">v2</a>
+        </section>
+    </header>
+    <main id="main">
+        
+    </main>
+
+    <script>
+        document.body.onload = addElement;
+
+        function addElement() {
+            const main = document.getElementById('main')
+            const colors =[
+                'rgb(46, 160, 247)', 
+                'rgb(159, 102, 225', 
+                'rgb(235, 93, 93)',
+                'rgb(235, 190, 93)',
+                'rgb(176, 227, 119)'
+            ]
+            function rdn() {
+                return Math.floor(Math.random() * 5)
+            }
+            console.log(rdn())
+            for(let i = 1; i < 21; i++) {
+                const newDiv = document.createElement("div");
+                const newContent = document.createTextNode(i);
+                newDiv.appendChild(newContent)
+                newDiv.classList.add('block', `block-${i}`)
+                if( i % 4 === 0 && i % 6 !== 0) {
+                    newDiv.classList.add('vertical')
+                } else if ( i % 5 === 0) {
+                    newDiv.classList.add('horizontal')
+                } else if ( i % 6 === 0 ) {
+                    newDiv.classList.add('bigbox')
+                }
+                
+                newDiv.style.backgroundColor = colors[rdn()]
+                main.appendChild(newDiv)
+            }
+        }
+    </script>
+</body>
+</html>
